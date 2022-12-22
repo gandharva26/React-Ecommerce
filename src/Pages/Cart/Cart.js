@@ -14,7 +14,7 @@ export const Cart = () => {
 return <CartItem data = {product}/>
             }
         })}
-        <div>Total $ {calculateTotal()}</div>
+        <div>Total : ${calculateTotal()} </div>
       
     </div>
     </div>

@@ -15,18 +15,27 @@ export const initializeCart = () =>{
 
 export const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(initializeCart());
-    const calculateTotal = (itemId) => {
+    
+
+       
+        
+    
+    const calculateTotal = () => {
         let total = 0;
-        for(let item in cartItems){
-            for(let prod in PRODUCTS){
-                if(prod.id === item){
-                    total = total + (cartItems[item] * prod.price)
-                }
+        for (const key in cartItems) {
+            if (cartItems.hasOwnProperty(key)) {
+             if(cartItems[key]){
+                total = total + (cartItems[key] * PRODUCTS[key - 1].price)
+             }
             }
-        }
-        return total;
+          }
+          console.log(total);
+          return total;
+    
     
     }
+    calculateTotal();
+    
     const addToCart = (itemId) => {
         setCartItems((prev) => {
            return {...prev, [itemId] : prev[itemId] + 1};
@@ -42,7 +51,7 @@ export const ShopContextProvider = (props) => {
     }
     const contextValue = {addToCart, removeFromCart, cartItems, calculateTotal}
     console.log(cartItems)
-
+    
    
 
   return (
