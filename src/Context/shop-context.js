@@ -22,13 +22,12 @@ export const ShopContextProvider = (props) => {
     
     const calculateTotal = () => {
         let total = 0;
-        for (const key in cartItems) {
-            if (cartItems.hasOwnProperty(key)) {
-             if(cartItems[key]){
+        for (let key in cartItems) {
+            if(cartItems[key]){
                 total = total + (cartItems[key] * PRODUCTS[key - 1].price)
              }
-            }
           }
+      
           console.log(total);
           return total;
     
